@@ -1,0 +1,217 @@
+/* CUBE CSS - Composition, Utility, Block, Exception */
+
+        /* ===== FONT IMPORTS ===== */
+        @font-face {
+            font-family: 'Sticky';
+            src: url('./fonts/Sticky-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Sticky';
+            src: url('./fonts/Sticky-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NotCourierSans';
+            src: url('./fonts/NotCourierSans.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NotCourierSans';
+            src: url('./fonts/NotCourierSans-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* ===== COLOR VARIABLES ===== */
+        :root {
+            /* Color Palette */
+            --rich-black: #071013;
+            --bright-pink: #FB6376;
+            --mint: #63A375;
+            --hunyadi-yellow: #EDAE49;
+            --cool-gray: #888DA7;
+
+            /* Semantic Colors */
+            --color-primary: var(--mint);
+            --color-secondary: var(--hunyadi-yellow);
+            --color-accent: var(--bright-pink);
+            --color-text: var(--rich-black);
+            --color-text-muted: var(--cool-gray);
+            --color-background: #f5f5f5;
+            --color-surface: #ffffff;
+
+            /* Font Families */
+            --title-font: 'Sticky', cursive;
+            --body-font: 'NotCourierSans', 'Courier New', monospace;
+        }
+
+        /* ===== COMPOSITION (Layout) ===== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-font);
+            line-height: 1.6;
+            background: var(--color-background);
+            color: var(--color-text);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .flow > * + * {
+            margin-top: 1.5rem;
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 2rem; }
+
+        .mb-0 { margin-bottom: 0; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+
+        /* ===== BLOCK (Components) ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--hunyadi-yellow) 0%, var(--hunyadi-yellow) 100%);
+            color: var(--color-surface);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .hero__title {
+            font-family: var(--title-font);
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .game-card {
+            background: var(--color-surface);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-card__title {
+            font-family: var(--title-font);
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .game-card__meta {
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin: 0.5rem 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-primary);
+            color: var(--color-surface);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .button:hover {
+            background: var(--hunyadi-yellow);
+            transform: translateY(-2px);
+        }
+
+        /* ===== EXCEPTION (Variations) ===== */
+        .button[href*="testflight"] {
+            background: var(--color-secondary);
+        }
+
+        .button[href*="testflight"]:hover {
+            background: var(--mint);
+            filter: brightness(0.85);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--title-font);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            border-bottom: 3px solid var(--color-primary);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--color-accent);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--color-secondary);
+            font-weight: bold;
+        }
+
+        strong {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero__title {
+                font-size: 2rem;
+            }
+
+            .game-card__title {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
